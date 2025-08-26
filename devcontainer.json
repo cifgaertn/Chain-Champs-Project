@@ -1,20 +1,26 @@
 {
-  "name": "ICP Dev Environment",
-  "image": "ghcr.io/dfinity/icp-dev-env-slim:17",
-  "forwardPorts": [4943, 5173],
-  "portsAttributes": {
-    "4943": {
-      "label": "dfx",
-      "onAutoForward": "ignore"
-    },
-    "5173": {
-      "label": "vite",
-      "onAutoForward": "openBrowser"
-    }
+  "name": "FactoryBot DFINITY Dev Environment",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
   },
   "customizations": {
     "vscode": {
-      "extensions": ["dfinity-foundation.vscode-motoko"]
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      },
+      "extensions": [
+        "motoko-lang.motoko",
+        "dfinity.vscode-dfinity",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ]
     }
-  }
+  },
+  "remoteUser": "node",
+  "postCreateCommand": "npm install",
+  "containerEnv": {
+    "DFX_VERSION": "0.19.2"
+  },
+  "forwardPorts": [8000]
 }
