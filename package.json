@@ -1,12 +1,30 @@
 {
-  "name": "evm-block-explorer",
+  "name": "factorybot_frontend",
+  "version": "0.1.0",
+  "description": "A React frontend for the FactoryBot DFINITY project.",
+  "private": true,
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
-    "prebuild": "npm run prebuild --workspaces --if-present",
-    "dev": "npm run dev --workspaces --if-present"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "dfx deploy --network=local",
+    "ic-dev": "dfx deploy --network=local && npm run dev",
+    "build:ic": "dfx generate factorybot_backend && npm run build"
   },
-  "type": "module",
-  "workspaces": [
-    "frontend"
-  ]
+  "dependencies": {
+    "@dfinity/agent": "^1.1.0",
+    "@dfinity/candid": "^1.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "vite": "^5.2.0"
+  }
 }
